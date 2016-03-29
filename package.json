@@ -1,0 +1,23 @@
+{
+  "name": "selenium",
+  "version": "1.0.0",
+  "description": "selenium test with broswerstack",
+  "main": "index.js",
+  "scripts": {
+    "test:browserstack": "mocha test/smoke/*.spec.js",
+    "test": "npm run test:browserstack"
+  },
+  "dependencies": {
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "browserstack-webdriver": "^2.41.1",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "keywords": [
+    "browserstack"
+  ],
+  "author": "Jun Kim",
+  "license": "ISC"
+}
