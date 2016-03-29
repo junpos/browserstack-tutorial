@@ -46,10 +46,59 @@ describe('Homepage', function () {
 
   describe('[Header]', function () {
 
-    it('should always pass', function () {
-      return expect(true).to.be.true;
+    it('should have social icons on desktop', function (done) {
+      if (config.vp.isMobile) {
+        return done();
+      }
+
+      driver.findElements(By.css('header .header-social .social-follow-item a'))
+      .then(function (elements) {
+        expect(elements).to.have.length(5);
+
+        var hrefs = elements.map(function (element) {
+          return element.getAttribute('href');
+        });
+
+        return webdriver.promise.all(hrefs);
+      })
+      .then(function (hrefs) {
+        expect(hrefs).to.eql([
+          'https://www.facebook.com/architecturaldigest',
+          'https://twitter.com/ArchDigest/',
+          'https://www.pinterest.com/archdigest/',
+          'https://instagram.com/archdigest/',
+          'https://plus.google.com/+Archdigest/'
+        ]);
+        done();
+      })
+      .thenCatch(done);
     });
 
+    it('should have a logo that hyperlinks to homepage', function (done) {
+      driver.findElement(By.css('.component-logo a'))
+      .then(function (element) {
+        expect(element).to.exist;
+        return element.getAttribute('href');
+      })
+      .then(function (href) {
+        expect(href).to.equal(buildUrl('/'));
+        done();
+      })
+      .thenCatch(done);
+    });
+
+    it('should have a link to the subscription page', function (done) {
+      driver.findElement(By.css('header .drawer-content .secondary-nav a.component-link'))
+      .then(function (element) {
+        return element.getAttribute('href');
+      })
+      .then(function (href) {
+        var link = config.vp.isMobile ? 'go/mobilefailsafe' : 'go/failsafe';
+        expect(href).to.contain(buildUrl('/') + link);
+        done();
+      })
+      .thenCatch(done);
+    });
   });
 
 
