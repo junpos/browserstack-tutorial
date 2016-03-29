@@ -4,8 +4,8 @@ var env = process.env;
 
 exports.capabilities = {
   'browserName': env.WD_BROWSER || 'firefox',
-  'browserstack.user': env.WD_BROWSERSTACK_USER || 'autopilotautomat1',
-  'browserstack.key': env.WD_BROWSERSTACK_KEY || 'hJ3ruEQZGNxuApudy3zG',
+  'browserstack.user': env.WD_BROWSERSTACK_USER || 'USERNAME',
+  'browserstack.key': env.WD_BROWSERSTACK_KEY || 'KEY',
   'resolution': '1280x1024'
 };
 
@@ -33,7 +33,7 @@ exports.vp = {
   width: vpConfig.viewportSizes[vpConfig.deviceDefaults[exports.device]]
 };
 
-exports.seleniumHub = env.WD_HUB || 'http://hub.browserstack.com/wd/hub';
+exports.seleniumHub = env.WD_HUB || 'http://127.0.0.1:4444/wd/hub';
 
 var envConfigs = {
   local: {
