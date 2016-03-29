@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test:browserstack": "mocha test/smoke/*.spec.js",
-    "test": "npm run test:browserstack"
+    "test": "npm run test:browserstack",
+    "test:local": "WD_HUB=http://127.0.0.1:4444/wd/hub npm run test"
   },
   "dependencies": {
     "lodash": "3.10.1"
