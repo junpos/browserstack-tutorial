@@ -1,12 +1,13 @@
 {
-  "name": "selenium",
-  "version": "1.0.0",
+  "name": "browserstakc",
+  "version": "0.1.0",
   "description": "selenium test with broswerstack",
   "main": "index.js",
   "scripts": {
     "test:browserstack": "mocha test/smoke/*.spec.js",
     "test": "npm run test:browserstack",
-    "test:local": "WD_HUB=http://127.0.0.1:4444/wd/hub npm run test"
+    "test:local": "WD_HUB=http://127.0.0.1:4444/wd/hub npm run test",
+    "commit": "npx git-cz"
   },
   "dependencies": {
     "lodash": "3.10.1"
@@ -20,5 +21,16 @@
     "browserstack"
   ],
   "author": "Jun Kim",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junpos/browserstack-tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/junpos/browserstack-tutorial/issues"
+  },
+  "homepage": "https://github.com/junpos/browserstack-tutorial#readme"
 }
